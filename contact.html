@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | PENTAFISH</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root { --bg-solid: #0D0D0D; --gold-accent: #D4AF37; --light-grey: #F2F2F2; }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--bg-solid); color: var(--light-grey); }
+        h1, h2, h3, .serif { font-family: 'Noto Sans JP', sans-serif; }
+        @font-face {
+            font-family: 'Westgate';
+            src: url('assets/Westgate.woff2') format('woff2'),
+                 url('assets/Westgate.woff') format('woff'),
+                 url('assets/Westgate.otf') format('opentype'),
+                 url('assets/Westgate.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        .font-westgate {
+            font-family: 'Westgate', 'Noto Sans JP', sans-serif;
+        }
+        .text-gold { color: var(--gold-accent); }
+        .border-gold { border-color: var(--gold-accent); }
+        .nav-link { position: relative; transition: color 0.4s ease; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0; background-color: var(--gold-accent); transition: width 0.4s ease; }
+        .nav-link:hover::after { width: 100%; }
+        input, textarea, select { 
+            background-color: transparent !important; 
+            border-color: rgba(255,255,255,0.1) !important; 
+            color: white !important;
+        }
+        input:focus, textarea:focus, select:focus { border-color: var(--gold-accent) !important; outline: none; }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-[#0D0D0D]/90 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-[1600px] mx-auto px-10 py-6 flex justify-between items-center">
+            <a href="index.html" class="text-5xl tracking-[0.3em] font-westgate text-white">PENTAFISH</a>
+            <div class="hidden lg:flex space-x-16 text-[0.65rem] uppercase tracking-[0.4em] font-light">
+                <a href="index.html" class="nav-link">Top</a>
+                <a href="philosophy.html" class="nav-link">Philosophy</a>
+                <a href="collections.html" class="nav-link">Collections</a>
+                <a href="craftsmanship.html" class="nav-link">Craftsmanship</a>
+                <a href="journal.html" class="nav-link">Journal</a>
+                <a href="contact.html" class="nav-link text-gold">Contact</a>
+            </div>
+            <div class="lg:hidden"><i data-lucide="menu" class="w-6 h-6 text-gold"></i></div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-64 pb-32 border-b border-white/5">
+        <div class="max-w-[1600px] mx-auto px-10 text-center">
+            <span class="text-gold uppercase tracking-[0.6em] text-[0.6rem] mb-6 block font-bold italic">Consultation</span>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-[-0.02em] leading-tight serif text-white" style="font-family: 'Playfair Display', serif;">Contact</h1>
+        </div>
+    </header>
+
+    <!-- Form Section -->
+    <section class="py-32">
+        <div class="max-w-3xl mx-auto px-10">
+            <div class="mb-20 text-center">
+                <p class="text-zinc-300 font-light leading-relaxed tracking-widest text-sm">
+                    製品に関するご質問や、特注オーダーのご相談を承ります。<br>
+                    </p>
+            </div>
+            <form action="https://formspree.io/f/xeenazln" method="POST" class="space-y-12">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-4">
+                        <label class="text-[0.6rem] uppercase tracking-[0.4em] text-zinc-300 font-bold">Name</label>
+                        <input type="text" name="name" placeholder="お名前" class="w-full border-b py-3 text-sm tracking-widest">
+                    </div>
+                    <div class="space-y-4">
+                        <label class="text-[0.6rem] uppercase tracking-[0.4em] text-zinc-300 font-bold">Email</label>
+                        <input type="email" name="email" placeholder="メールアドレス" class="w-full border-b py-3 text-sm tracking-widest">
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <label class="text-[0.6rem] uppercase tracking-[0.4em] text-zinc-300 font-bold">Inquiry Type</label>
+                    <select name="inquiry_type" class="w-full border-b py-3 text-sm tracking-widest bg-transparent appearance-none cursor-pointer">
+                        <option value="製品に関するお問い合わせ" class="bg-zinc-900">製品に関するお問い合わせ</option>
+                        <option value="特注オーダー（Custom Order）のご相談" class="bg-zinc-900">特注オーダー（Custom Order）のご相談</option>
+                        <option value="取材・掲載のご依頼" class="bg-zinc-900">取材・掲載のご依頼</option>
+                        <option value="その他" class="bg-zinc-900">その他</option>
+                    </select>
+                </div>
+
+                <div class="space-y-4">
+                    <label class="text-[0.6rem] uppercase tracking-[0.4em] text-zinc-300 font-bold">Message</label>
+                    <textarea name="message" rows="6" placeholder="お問い合わせ内容" class="w-full border-b py-3 text-sm tracking-widest"></textarea>
+                </div>
+
+                <div class="text-center pt-10">
+                    <button type="submit" class="bg-white text-black px-16 py-5 text-[0.65rem] font-bold uppercase tracking-[0.3em] hover:bg-gold transition-all duration-500">
+                        Send Inquiry
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="py-32 bg-zinc-950 border-t border-white/5">
+        <div class="max-w-[1600px] mx-auto px-10 grid md:grid-cols-3 gap-20">
+            <div>
+                <h4 class="text-gold text-[0.6rem] uppercase tracking-[0.5em] mb-10 font-bold italic">Location</h4>
+                <p class="text-xs text-zinc-300 font-light leading-loose tracking-[0.2em]">
+                    〒640-8482 和歌山県和歌山市六十谷14<br>
+                    PENTAFISH Atelier (Appointment Only)
+                </p>
+            </div>
+            <div>
+                <h4 class="text-gold text-[0.6rem] uppercase tracking-[0.5em] mb-10 font-bold italic">Social</h4>
+                <div class="flex flex-col gap-4">
+                    <a href="https://www.instagram.com/penta_fish/" target="_blank" class="flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
+                        <i data-lucide="instagram" class="w-4 h-4"></i>
+                        <span class="text-xs tracking-[0.2em]">@penta_fish</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
+                        <i data-lucide="twitter" class="w-4 h-4"></i>
+                        <span class="text-xs tracking-[0.2em]">Twitter</span>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-gold text-[0.6rem] uppercase tracking-[0.5em] mb-10 font-bold italic">Contact</h4>
+                <p class="text-xs text-zinc-300 font-light leading-loose tracking-[0.2em]">
+                    contact@pentafish.com<br>
+                    +81 (461)3365
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-[#0D0D0D] border-t border-white/5 text-center">
+        <p class="text-zinc-500 text-[0.5rem] tracking-[0.4em] uppercase">&copy; 2026 PENTAFISH. All rights reserved.</p>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
+

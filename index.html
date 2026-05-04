@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <title>PENTAFISH | Experience So Intense, It Shakes All Five Senses</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-solid: #0D0D0D;
+            --gold-accent: #D4AF37;
+            --light-grey: #F2F2F2;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-solid);
+            color: var(--light-grey);
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        @font-face {
+            font-family: 'Westgate';
+            src: url('assets/Westgate.woff2') format('woff2'),
+                url('assets/Westgate.woff') format('woff'),
+                url('assets/Westgate.otf') format('opentype'),
+                url('assets/Westgate.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        .font-westgate {
+            font-family: 'Westgate', 'Noto Sans JP', sans-serif;
+        }
+
+        .font-shippori {
+            font-family: 'Shippori Mincho', serif;
+        }
+
+        .text-gold {
+            color: var(--gold-accent);
+        }
+
+        .bg-gold {
+            background-color: var(--gold-accent);
+        }
+
+        .border-gold {
+            border-color: var(--gold-accent);
+        }
+
+        /* Layout: Exhibition Spacing */
+        .exhibition-spacing {
+            padding: 8rem 0;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--gold-accent);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .reveal-img {
+            overflow: hidden;
+            clip-path: inset(100% 0 0 0);
+            transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .reveal-img.active {
+            clip-path: inset(0 0 0 0);
+        }
+
+        .btn-premium {
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold-accent);
+            padding: 1rem 2.5rem;
+            letter-spacing: 0.2em;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            transition: all 0.5s ease;
+        }
+
+        .btn-premium:hover {
+            background-color: var(--gold-accent);
+            color: var(--bg-solid);
+            border-color: var(--gold-accent);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-[#0D0D0D]/90 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-[1600px] mx-auto px-10 py-6 flex justify-between items-center">
+            <a href="index.html" class="text-5xl tracking-[0.3em] font-westgate text-white">PENTAFISH</a>
+            <div class="hidden lg:flex space-x-16 text-[0.65rem] uppercase tracking-[0.4em] font-light">
+                <a href="index.html" class="nav-link text-gold">Top</a>
+                <a href="philosophy.html" class="nav-link">Philosophy</a>
+                <a href="collections.html" class="nav-link">Collections</a>
+                <a href="craftsmanship.html" class="nav-link">Craftsmanship</a>
+                <a href="journal.html" class="nav-link">Journal</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="lg:hidden"><i data-lucide="menu" class="w-6 h-6 text-gold"></i></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="assets/hero.png" alt="PENTAFISH Hero"
+                class="w-full h-full object-cover scale-110 animate-[zoom_20s_infinite_alternate]">
+            <div class="absolute inset-0 bg-[#0D0D0D]/60"></div>
+        </div>
+        <div class="relative z-10 text-center px-6">
+            <span
+                class="block text-gold uppercase tracking-[0.6em] text-[0.6rem] mb-8 font-semibold animate-pulse">Experience
+                So Intense, It Shakes All Five Senses</span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-8 tracking-[-0.02em] leading-tight serif text-white">
+                五感をデザインし、新しいカタチを。<br><span class="italic font-light"></span>
+                </p>
+                <div class="mt-16">
+                    <a href="collections.html" class="btn-premium inline-block">Enter Collection</a>
+                </div>
+        </div>
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center">
+            <span class="text-[0.5rem] tracking-[0.4em] uppercase text-zinc-300 mb-4"></span>
+            <div class="w-[1px] h-20 bg-gradient-to-b from-gold-accent to-transparent opacity-50"></div>
+        </div>
+    </header>
+
+    <!-- Visual Impact Section (Exhibition Style) -->
+    <section class="exhibition-spacing bg-[#0D0D0D]">
+        <div class="max-w-[1400px] mx-auto px-10">
+            <div class="grid md:grid-cols-2 gap-32 items-center">
+                <div class="relative group overflow-hidden">
+                    <img src="assets/texture_wood.png" alt="Precision"
+                        class="w-full h-auto transition-transform duration-1000 group-hover:scale-105">
+
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-5xl mb-12 font-shippori leading-relaxed tracking-widest text-zinc-100">
+                        「触れたくなる」<br>　　　質感へのこだわり</h2>
+                    <p class="text-zinc-200 font-light leading-[2.2] tracking-wider mb-10">
+                        私たちが目指すモノづくりは、単なる道具としての性能にとどまりません。<br>五感のどこかに響くモノづくりを追求し続けます。
+                    </p>
+                    <a href="craftsmanship.html"
+                        class="text-gold text-xs uppercase tracking-[0.3em] border-b border-gold/30 pb-2 hover:border-gold transition-all">Explore
+                        Craftsmanship</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-32 border-y border-white/5 bg-zinc-950">
+        <div class="max-w-3xl mx-auto px-10 text-center">
+            <span class="text-gold text-[0.6rem] uppercase tracking-[0.5em] mb-6 block">Privilege</span>
+            <h2 class="text-3xl md:text-3xl mb-10 serif">ニュースのご案内</h2>
+            <p class="text-zinc-300 text-sm font-light leading-loose tracking-widest mb-12">
+                最新作や限定モデル、特別イベントの優先案内をニュースレター登録者様へお届けいたします。
+            </p>
+            <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
+                <input type="email" placeholder="Email Address"
+                    class="bg-transparent border border-white/10 px-6 py-4 text-xs tracking-widest w-full focus:border-gold outline-none transition-all">
+                <button type="submit"
+                    class="bg-white text-black px-8 py-4 text-[0.65rem] font-bold uppercase tracking-[0.2em] hover:bg-gold transition-all">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 bg-[#0D0D0D] border-t border-white/5">
+        <div class="max-w-[1600px] mx-auto px-10">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12">
+                <div>
+                    <a href="index.html"
+                        class="text-5xl tracking-[0.3em] font-westgate text-white mb-8 block">PENTAFISH</a>
+                    <p class="text-zinc-400 text-[0.65rem] tracking-widest leading-loose">
+                        Experience So Intense, It Shakes All Five Senses.<br>
+                        Artisanal Fishing Tools for the Niche Angler.
+                    </p>
+                </div>
+                <div class="flex gap-20">
+                    <div>
+                        <h4 class="text-[0.6rem] uppercase tracking-[0.4em] text-zinc-300 mb-6 font-bold">Follow</h4>
+                        <div class="flex flex-col gap-4 text-xs tracking-widest">
+                            <a href="https://www.instagram.com/penta_fish/" target="_blank" class="hover:text-gold">Instagram</a>
+                            <a href="#" class="hover:text-gold">Twitter</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-[0.6rem] uppercase tracking-[0.4em] text-zinc-300 mb-6 font-bold">Legal</h4>
+                        <div class="flex flex-col gap-4 text-xs tracking-widest">
+                            <a href="privacy-policy.html" class="hover:text-gold">Privacy Policy</a>
+                            <a href="terms-of-use.html" class="hover:text-gold">Terms of Use</a>
+                            <a href="legal-notice.html" class="hover:text-gold">Legal Notice</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="mt-20 pt-8 border-t border-white/5 flex justify-between items-center text-[0.55rem] tracking-[0.4em] text-zinc-500 uppercase">
+                <p>&copy; 2026 PENTAFISH. All rights reserved.</p>
+                <p>Designed for the Senses.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // CSS for Animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes zoom {
+                from { transform: scale(1.1); }
+                to { transform: scale(1.0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>

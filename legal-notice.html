@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>特定商取引法に基づく表記 | PENTAFISH</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root { --bg-solid: #0D0D0D; --gold-accent: #D4AF37; --light-grey: #F2F2F2; }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--bg-solid); color: var(--light-grey); }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', 'Noto Sans JP', sans-serif; }
+        @font-face {
+            font-family: 'Westgate';
+            src: url('assets/Westgate.woff2') format('woff2'), url('assets/Westgate.woff') format('woff'), url('assets/Westgate.otf') format('opentype'), url('assets/Westgate.ttf') format('truetype');
+            font-weight: normal; font-style: normal; font-display: swap;
+        }
+        .font-westgate { font-family: 'Westgate', 'Noto Sans JP', sans-serif; }
+        .text-gold { color: var(--gold-accent); }
+        .nav-link { position: relative; transition: color 0.4s ease; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0; background-color: var(--gold-accent); transition: width 0.4s ease; }
+        .nav-link:hover::after { width: 100%; }
+        .spec-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            padding: 1.4rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            align-items: baseline;
+        }
+        .spec-row:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+        .spec-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.3em; color: #71717a; }
+        .spec-value { font-size: 0.8rem; font-weight: 300; line-height: 2; letter-spacing: 0.05em; color: #d4d4d8; }
+    </style>
+</head>
+<body class="antialiased">
+    <nav class="fixed w-full z-50 bg-[#0D0D0D]/90 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-[1600px] mx-auto px-10 py-6 flex justify-between items-center">
+            <a href="index.html" class="text-5xl tracking-[0.3em] font-westgate text-white">PENTAFISH</a>
+            <div class="hidden lg:flex space-x-16 text-[0.65rem] uppercase tracking-[0.4em] font-light">
+                <a href="index.html" class="nav-link">Top</a>
+                <a href="philosophy.html" class="nav-link">Philosophy</a>
+                <a href="collections.html" class="nav-link">Collections</a>
+                <a href="craftsmanship.html" class="nav-link">Craftsmanship</a>
+                <a href="journal.html" class="nav-link">Journal</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="lg:hidden"><i data-lucide="menu" class="w-6 h-6 text-gold"></i></div>
+        </div>
+    </nav>
+
+    <main class="pt-48 pb-40">
+        <div class="max-w-3xl mx-auto px-10">
+
+            <a href="index.html" class="inline-flex items-center gap-3 text-zinc-400 text-[0.6rem] uppercase tracking-[0.4em] hover:text-gold transition-colors mb-20">
+                <i data-lucide="arrow-left" class="w-3 h-3"></i>
+                Top
+            </a>
+
+            <span class="text-gold uppercase tracking-[0.6em] text-[0.6rem] mb-6 block font-bold italic">Legal</span>
+            <h1 class="text-4xl md:text-5xl mb-4 serif text-white">Legal Notice</h1>
+            <p class="text-zinc-400 text-xs tracking-widest mb-20">特定商取引法に基づく表記</p>
+
+            <div class="spec-row">
+                <span class="spec-label">販売業者</span>
+                <span class="spec-value">PENTA FISH</span>
+            </div>
+            <div class="spec-row">
+                <span class="spec-label">代表責任者</span>
+                <span class="spec-value">長尾 真央</span>
+            </div>
+            <div class="spec-row">
+                <span class="spec-label">所在地</span>
+                <span class="spec-value">640-8482<br> 和歌山県和歌山市六十谷14</span>
+            </div>
+            <div class="spec-row">
+                <span class="spec-label">電話番号</span>
+                <span class="spec-value">073-461-3365</span>
+            </div>
+            <div class="spec-row">
+                <span class="spec-label">メールアドレス</span>
+                <span class="spec-value">kariad20120926@gmail.com</span>
+            </div>
+            <div class="spec-row">
+                <span class="spec-label">販売価格</span>
+                <span class="spec-value">各商品ページに記載</span>
+            </div>
+            <div class="spec-row">
+                <span class="spec-label">商品代金以外の必要料金</span>
+                <span class="spec-value">消費税、送料（全国一律550円、または地域別）、振込手数料</span>
+            </div>
+            <div class="spec-row">
+                <span class="spec-label">支払方法</span>
+                <span class="spec-value">クレジットカード、銀行振込、等</span>
+            </div>
+            <div class="spec-row">
+                <span class="spec-label">商品の引き渡し時期</span>
+                <span class="spec-value">決済確認後、2営業日以内に発送　※特注・オーダーに関しては要相談</span>
+            </div>
+            <div class="spec-row">
+                <span class="spec-label">返品・交換・キャンセル</span>
+                <span class="spec-value">商品到着後7日以内に要連絡。不良品の場合は当店負担、お客様都合の場合はお客様負担。</span>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-20 bg-[#0D0D0D] border-t border-white/5">
+        <div class="max-w-[1600px] mx-auto px-10 text-center text-[0.55rem] tracking-[0.4em] text-zinc-500 uppercase">
+            <p>&copy; 2026 PENTAFISH. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

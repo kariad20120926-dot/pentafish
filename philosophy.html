@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <title>Philosophy | PENTAFISH</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-solid: #0D0D0D;
+            --gold-accent: #D4AF37;
+            --light-grey: #F2F2F2;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-solid);
+            color: var(--light-grey);
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: 'Playfair Display', 'Noto Sans JP', sans-serif;
+        }
+
+        @font-face {
+            font-family: 'Westgate';
+            src: url('assets/Westgate.woff2') format('woff2'),
+                url('assets/Westgate.woff') format('woff'),
+                url('assets/Westgate.otf') format('opentype'),
+                url('assets/Westgate.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        .font-westgate {
+            font-family: 'Westgate', 'Playfair Display', serif;
+        }
+
+        .text-gold {
+            color: var(--gold-accent);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.4s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--gold-accent);
+            transition: width 0.4s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .exhibition-spacing {
+            padding: 10rem 0;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-[#0D0D0D]/90 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-[1600px] mx-auto px-10 py-6 flex justify-between items-center">
+            <a href="index.html" class="text-5xl tracking-[0.3em] font-westgate text-white">PENTAFISH</a>
+            <div class="hidden lg:flex space-x-16 text-[0.65rem] uppercase tracking-[0.4em] font-light">
+                <a href="index.html" class="nav-link">Top</a>
+                <a href="philosophy.html" class="nav-link text-gold">Philosophy</a>
+                <a href="collections.html" class="nav-link">Collections</a>
+                <a href="craftsmanship.html" class="nav-link">Craftsmanship</a>
+                <a href="journal.html" class="nav-link">Journal</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="lg:hidden"><i data-lucide="menu" class="w-6 h-6 text-gold"></i></div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-64 pb-32 border-b border-white/5">
+        <div class="max-w-[1600px] mx-auto px-10">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-[-0.02em] leading-tight serif text-white">Philosophy
+            </h1>
+        </div>
+    </header>
+
+    <!-- Content Sections -->
+    <section class="exhibition-spacing">
+        <div class="max-w-5xl mx-auto px-10 text-center">
+            <div class="mb-32">
+                <h2 class="text-4xl md:text-4xl mb-12 serif italic text-gold opacity-60">" For the Moment That Shapes
+                    Your Fishing
+                    Style. "</h2>
+                <div class="max-w-2xl mx-auto">
+                    <p class="text-zinc-200 font-light leading-loose tracking-wider">
+                        「ただひとつ、選ぶならば」<br>
+                        思いがけない瞬間は突如として訪れる<br>
+                        息を呑む一瞬をより価値あるものにしたい<br>
+                        そんな「有限の瞬間」に選ばれるものを目指し、発信していきます。
+                    </p>
+                </div>
+            </div>
+
+            <div class="aspect-[21/9] bg-zinc-900 overflow-hidden mb-40">
+                <img src="assets/about.png" alt="Philosophy Visual"
+                    class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-[2s]">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 bg-[#0D0D0D] border-t border-white/5">
+        <div
+            class="max-w-[1600px] mx-auto px-10 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-[0.55rem] tracking-[0.4em] text-zinc-500 uppercase">
+            <p>&copy; 2026 PENTAFISH. All rights reserved.</p>
+            <div class="flex gap-10 mt-6 md:mt-0">
+                <a href="#" class="hover:text-gold transition-colors">Instagram</a>
+                <a href="#" class="hover:text-gold transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

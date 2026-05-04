@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <title>Collections | PENTAFISH</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-solid: #0D0D0D;
+            --gold-accent: #D4AF37;
+            --light-grey: #F2F2F2;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-solid);
+            color: var(--light-grey);
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        @font-face {
+            font-family: 'Westgate';
+            src: url('assets/Westgate.woff2') format('woff2'),
+                url('assets/Westgate.woff') format('woff'),
+                url('assets/Westgate.otf') format('opentype'),
+                url('assets/Westgate.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        .font-westgate {
+            font-family: 'Westgate', 'Noto Sans JP', sans-serif;
+        }
+
+        .text-gold {
+            color: var(--gold-accent);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.4s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--gold-accent);
+            transition: width 0.4s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .product-card {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .exhibition-spacing {
+            padding: 10rem 0;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-[#0D0D0D]/90 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-[1600px] mx-auto px-10 py-6 flex justify-between items-center">
+            <a href="index.html" class="text-5xl tracking-[0.3em] font-westgate text-white">PENTAFISH</a>
+            <div class="hidden lg:flex space-x-16 text-[0.65rem] uppercase tracking-[0.4em] font-light">
+                <a href="index.html" class="nav-link">Top</a>
+                <a href="philosophy.html" class="nav-link">Philosophy</a>
+                <a href="collections.html" class="nav-link text-gold">Collections</a>
+                <a href="craftsmanship.html" class="nav-link">Craftsmanship</a>
+                <a href="journal.html" class="nav-link">Journal</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="lg:hidden"><i data-lucide="menu" class="w-6 h-6 text-gold"></i></div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-64 pb-32 border-b border-white/5 bg-zinc-950">
+        <div class="max-w-[1600px] mx-auto px-10">
+            <span class="text-gold uppercase tracking-[0.6em] text-[0.6rem] mb-6 block font-bold italic">Curated
+                Gallery</span>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-[-0.02em] leading-tight serif text-white" style="font-family: 'Playfair Display', serif;">Collections
+            </h1>
+        </div>
+    </header>
+
+    <!-- Gallery Section -->
+    <section class="exhibition-spacing">
+        <div class="max-w-[1600px] mx-auto px-10">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-20 gap-y-40">
+                <!-- Item 1: Handmade Lure -->
+                <a href="product_with-beak-s2.html" class="product-card group block">
+                    <div class="aspect-[3/4] bg-zinc-900 mb-12 overflow-hidden relative">
+                        <img src="assets/lure_a.png" alt="Lure A"
+                            class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 border-[20px] border-transparent group-hover:border-white/5 transition-all pointer-events-none">
+                        </div>
+                    </div>
+                    <h3 class="text-2xl mb-6 tracking-wider" style="font-family: 'Playfair Display', serif;">With Beak S2</h3>
+                </a>
+
+                <!-- Item 2: Fashion/Apparel (Using lure_b as placeholder style) -->
+                <a href="product_kamaitachi.html" class="product-card group block">
+                    <div class="aspect-[3/4] bg-zinc-900 mb-12 overflow-hidden relative">
+                        <img src="assets/lure_b.png" alt="Apparel Placeholder"
+                            class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 border-[20px] border-transparent group-hover:border-white/5 transition-all pointer-events-none">
+                        </div>
+                    </div>
+                    <h3 class="text-2xl mb-6 tracking-wider" style="font-family: 'Playfair Display', serif;">Kamaitachi</h3>
+                </a>
+
+                <!-- Item 3: Gear -->
+                <a href="product_to-stomp.html" class="product-card group block">
+                    <div class="aspect-[3/4] bg-zinc-900 mb-12 overflow-hidden relative">
+                        <img src="assets/lure_c.png" alt="Gear Placeholder"
+                            class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 border-[20px] border-transparent group-hover:border-white/5 transition-all pointer-events-none">
+                        </div>
+                    </div>
+                    <h3 class="text-2xl mb-6 tracking-wider" style="font-family: 'Playfair Display', serif;">To Stomp</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 bg-[#0D0D0D] border-t border-white/5">
+        <div
+            class="max-w-[1600px] mx-auto px-10 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-[0.55rem] tracking-[0.4em] text-zinc-500 uppercase">
+            <p>&copy; 2026 PENTAFISH. All rights reserved.</p>
+            <div class="flex gap-10 mt-6 md:mt-0">
+                <a href="#" class="hover:text-gold transition-colors">Shop Info</a>
+                <a href="#" class="hover:text-gold transition-colors">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

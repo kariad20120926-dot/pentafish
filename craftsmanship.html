@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <title>Craftsmanship | PENTAFISH</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-solid: #0D0D0D;
+            --gold-accent: #D4AF37;
+            --light-grey: #F2F2F2;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-solid);
+            color: var(--light-grey);
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        @font-face {
+            font-family: 'Westgate';
+            src: url('assets/Westgate.woff2') format('woff2'),
+                 url('assets/Westgate.woff') format('woff'),
+                 url('assets/Westgate.otf') format('opentype'),
+                 url('assets/Westgate.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        .font-westgate {
+            font-family: 'Westgate', 'Noto Sans JP', sans-serif;
+        }
+
+        .text-gold {
+            color: var(--gold-accent);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.4s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--gold-accent);
+            transition: width 0.4s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .exhibition-spacing {
+            padding: 12rem 0;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-[#0D0D0D]/90 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-[1600px] mx-auto px-10 py-6 flex justify-between items-center">
+            <a href="index.html" class="text-5xl tracking-[0.3em] font-westgate text-white">PENTAFISH</a>
+            <div class="hidden lg:flex space-x-16 text-[0.65rem] uppercase tracking-[0.4em] font-light">
+                <a href="index.html" class="nav-link">Top</a>
+                <a href="philosophy.html" class="nav-link">Philosophy</a>
+                <a href="collections.html" class="nav-link">Collections</a>
+                <a href="craftsmanship.html" class="nav-link text-gold">Craftsmanship</a>
+                <a href="journal.html" class="nav-link">Journal</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="lg:hidden"><i data-lucide="menu" class="w-6 h-6 text-gold"></i></div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-64 pb-32 border-b border-white/5">
+        <div class="max-w-[1600px] mx-auto px-10">
+            <span class="text-gold uppercase tracking-[0.6em] text-[0.6rem] mb-6 block font-bold italic">The Art of
+                Making</span>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-[-0.02em] leading-tight serif text-white" style="font-family: 'Playfair Display', serif;">Craftsmanship</h1>
+        </div>
+    </header>
+
+    <!-- Materials Section -->
+    <section class="exhibition-spacing">
+        <div class="max-w-7xl mx-auto px-10">
+
+            <!-- 01 -->
+            <div class="grid md:grid-cols-2 gap-24 items-center mb-40">
+                <div>
+                    <img src="assets/Craftsmanship_01.png" alt="Material Selection" class="w-full h-auto shadow-2xl">
+                </div>
+                <div>
+                    <span class="text-zinc-400 text-[0.5rem] tracking-[0.5em] block mb-8 uppercase">01 / Material | 素材の厳選</span>
+                    <h2 class="text-3xl md:text-4xl mb-10 serif italic">「命を吹き込むための妥協なき素材選び」</h2>
+                    <p class="text-zinc-200 font-light leading-relaxed tracking-wider">
+                        ウッドルアーは、木材の質から決まると言っても過言ではありません。厳選された天然木の中でも、密度・木目・含水率を徹底管理。個体差を最小限に抑え、理想のアクションを生むための「核」となる素材を、厳選しています。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 02 -->
+            <div class="grid md:grid-cols-2 gap-24 items-center mb-40">
+                <div class="md:order-2">
+                    <img src="assets/Craftsmanship_02.png" alt="Machining" class="w-full h-auto shadow-2xl">
+                </div>
+                <div class="md:order-1">
+                    <span class="text-zinc-400 text-[0.5rem] tracking-[0.5em] block mb-8 uppercase">02 / Machining | 精密切削と手研磨</span>
+                    <h2 class="text-3xl md:text-4xl mb-10 serif italic">「コンマ数ミリの差が追求と妥協を分ける」</h2>
+                    <p class="text-zinc-200 font-light leading-relaxed tracking-wider">
+                        マシニングによる精密加工で重心バランスを確保しつつ、最終的なフォルムは職人の手研磨により仕上げられます。機械の正確さと人の指先の感覚。その融合により、妥協に収まらず、私たちが追求するルアーの動きを生み出します。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 03 -->
+            <div class="grid md:grid-cols-2 gap-24 items-center mb-40">
+                <div>
+                    <img src="assets/Craftsmanship_03.png" alt="Assembly" class="w-full h-auto shadow-2xl">
+                </div>
+                <div>
+                    <span class="text-zinc-400 text-[0.5rem] tracking-[0.5em] block mb-8 uppercase">03 / Assembly | 組み付け</span>
+                    <h2 class="text-3xl md:text-4xl mb-10 serif italic">「外観だけではない。内部に秘めた拘りの技」</h2>
+                    <p class="text-zinc-200 font-light leading-relaxed tracking-wider">
+                        ウェイトやワイヤーなどのパーツを、ミリ単位のズレも許さず配置。着水直後からの立ち上がりやレスポンスの良さを、この組み付けのプロセスによって決まります。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 04 -->
+            <div class="grid md:grid-cols-2 gap-24 items-center mb-40">
+                <div class="md:order-2">
+                    <img src="assets/Craftsmanship_04.png" alt="Surface Preparation" class="w-full h-auto shadow-2xl">
+                </div>
+                <div class="md:order-1">
+                    <span class="text-zinc-400 text-[0.5rem] tracking-[0.5em] block mb-8 uppercase">04 / Surface Preparation | 下地処理</span>
+                    <h2 class="text-3xl md:text-4xl mb-10 serif italic">「動きを殺さない、浸水を許さないボディ」</h2>
+                    <p class="text-zinc-200 font-light leading-relaxed tracking-wider">
+                        木材の弱点である浸水を完全に遮断しつつも、天然素材特有の「浮力」と「キレ」を最大限に引き出すために特殊処理を施しています。薄く、かつ強靭な下地層を形成することで、激しい使用下でも本来のアクションを長期間維持します。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 05 -->
+            <div class="grid md:grid-cols-2 gap-24 items-center">
+                <div>
+                    <img src="assets/Craftsmanship_05.png" alt="Painting & Coating" class="w-full h-auto shadow-2xl">
+                </div>
+                <div>
+                    <span class="text-zinc-400 text-[0.5rem] tracking-[0.5em] block mb-8 uppercase">05 / Painting & Coating | 彩色と美学</span>
+                    <h2 class="text-3xl md:text-4xl mb-10 serif italic">「機能美を纏う、芸術的なフィニッシュ」</h2>
+                    <p class="text-zinc-200 font-light leading-relaxed tracking-wider">
+                        幾重にも塗り重ねられた透明度の高いコーティングは、単なる装飾ではありません。深みのある輝きが所有欲を満たすのはもちろん、フィールドでの過酷な環境から色彩を保護し、使い込むほどに愛着が湧く道具の提供を約束します。
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 bg-[#0D0D0D] border-t border-white/5">
+        <div
+            class="max-w-[1600px] mx-auto px-10 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-[0.55rem] tracking-[0.4em] text-zinc-500 uppercase">
+            <p>&copy; 2026 PENTAFISH. All rights reserved.</p>
+            <p>Experience So Intense, It Shakes All Five Senses</p>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

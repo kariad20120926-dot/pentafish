@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <title>Journal | PENTAFISH</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-solid: #0D0D0D;
+            --gold-accent: #D4AF37;
+            --light-grey: #F2F2F2;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-solid);
+            color: var(--light-grey);
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        @font-face {
+            font-family: 'Westgate';
+            src: url('assets/Westgate.woff2') format('woff2'),
+                 url('assets/Westgate.woff') format('woff'),
+                 url('assets/Westgate.otf') format('opentype'),
+                 url('assets/Westgate.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        .font-westgate {
+            font-family: 'Westgate', 'Noto Sans JP', sans-serif;
+        }
+
+        .text-gold {
+            color: var(--gold-accent);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.4s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--gold-accent);
+            transition: width 0.4s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-[#0D0D0D]/90 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-[1600px] mx-auto px-10 py-6 flex justify-between items-center">
+            <a href="index.html" class="text-5xl tracking-[0.3em] font-westgate text-white">PENTAFISH</a>
+            <div class="hidden lg:flex space-x-16 text-[0.65rem] uppercase tracking-[0.4em] font-light">
+                <a href="index.html" class="nav-link">Top</a>
+                <a href="philosophy.html" class="nav-link">Philosophy</a>
+                <a href="collections.html" class="nav-link">Collections</a>
+                <a href="craftsmanship.html" class="nav-link">Craftsmanship</a>
+                <a href="journal.html" class="nav-link text-gold">Journal</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="lg:hidden"><i data-lucide="menu" class="w-6 h-6 text-gold"></i></div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-64 pb-32 border-b border-white/5 bg-zinc-950">
+        <div class="max-w-[1600px] mx-auto px-10">
+            <span class="text-gold uppercase tracking-[0.6em] text-[0.6rem] mb-6 block font-bold italic">Narrative &
+                Record</span>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-[-0.02em] leading-tight serif text-white" style="font-family: 'Playfair Display', serif;">Journal</h1>
+        </div>
+    </header>
+
+    <!-- Blog Posts Section -->
+    <section class="py-32">
+        <div class="max-w-4xl mx-auto px-10 space-y-32">
+
+            <!-- Post 3 (最新) -->
+            <article>
+                <div class="aspect-video bg-zinc-900 mb-10 overflow-hidden relative group">
+                    <img src="assets/about.png" alt="Journal Photo"
+                        class="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105">
+                </div>
+                <div class="flex items-center gap-6 mb-8">
+                    <time class="text-zinc-400 text-[0.6rem] uppercase tracking-[0.4em]">2026.05.04</time>
+                    <span class="text-gold text-[0.5rem] uppercase tracking-[0.3em] border border-gold/30 px-3 py-1">Business</span>
+                </div>
+                <h2 class="text-lg md:text-xl mb-6 serif hover:text-gold transition-colors cursor-pointer leading-tight">
+                    For Business | お取引・法人様向けオーダー</h2>
+                <p class="text-zinc-400 font-light text-xs leading-[2] tracking-wider mb-10">
+                    PENTA FISHのプロダクトをお取り扱いいただける小売店様向けの窓口を開設しております。製品の卸売ロットや納期に関するご相談は、Contactページの専用フォームよりお問い合わせください。</p>
+                <a href="journal_post-03.html"
+                    class="text-xs uppercase tracking-[0.3em] font-bold border-b border-white/10 pb-2 hover:border-gold transition-all">Read More</a>
+            </article>
+            <article>
+                <div class="aspect-video bg-zinc-900 mb-10 overflow-hidden relative group">
+                    <img src="assets/about.png" alt="Journal Photo"
+                        class="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105">
+                </div>
+                <div class="flex items-center gap-6 mb-8">
+                    <time class="text-zinc-400 text-[0.6rem] uppercase tracking-[0.4em]">2026.04.27</time>
+                    <span class="text-gold text-[0.5rem] uppercase tracking-[0.3em] border border-gold/30 px-3 py-1">Record</span>
+                </div>
+                <h2 class="text-lg md:text-xl mb-6 serif hover:text-gold transition-colors cursor-pointer leading-tight">
+                    Official Website Launched</h2>
+                <p class="text-zinc-400 font-light text-xs leading-[2] tracking-wider mb-10">
+                    PENTA FISHの公式ウェブサイトを公開いたしました。プロダクトの最新情報はもちろん、日々の開発風景やフィールドテストの記録、活動の動向を綴る「Journal」にもぜひご注目ください。</p>
+                <a href="journal_post-01.html"
+                    class="text-xs uppercase tracking-[0.3em] font-bold border-b border-white/10 pb-2 hover:border-gold transition-all">Read More</a>
+            </article>
+
+        </div>
+    </section>
+    <footer class="py-20 bg-[#0D0D0D] border-t border-white/5">
+        <div class="max-w-[1600px] mx-auto px-10 text-center text-[0.55rem] tracking-[0.4em] text-zinc-500 uppercase">
+            <p>&copy; 2026 PENTAFISH. Journal for the Senses.</p>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Stomp | PENTAFISH</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-solid: #0D0D0D;
+            --gold-accent: #D4AF37;
+            --light-grey: #F2F2F2;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-solid);
+            color: var(--light-grey);
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', 'Noto Sans JP', sans-serif;
+        }
+
+        @font-face {
+            font-family: 'Westgate';
+            src: url('assets/Westgate.woff2') format('woff2'),
+                 url('assets/Westgate.woff') format('woff'),
+                 url('assets/Westgate.otf') format('opentype'),
+                 url('assets/Westgate.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        .font-westgate { font-family: 'Westgate', 'Noto Sans JP', sans-serif; }
+        .text-gold { color: var(--gold-accent); }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.4s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--gold-accent);
+            transition: width 0.4s ease;
+        }
+
+        .nav-link:hover::after { width: 100%; }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .spec-row:first-child {
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-[#0D0D0D]/90 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-[1600px] mx-auto px-10 py-6 flex justify-between items-center">
+            <a href="index.html" class="text-5xl tracking-[0.3em] font-westgate text-white">PENTAFISH</a>
+            <div class="hidden lg:flex space-x-16 text-[0.65rem] uppercase tracking-[0.4em] font-light">
+                <a href="index.html" class="nav-link">Top</a>
+                <a href="philosophy.html" class="nav-link">Philosophy</a>
+                <a href="collections.html" class="nav-link text-gold">Collections</a>
+                <a href="craftsmanship.html" class="nav-link">Craftsmanship</a>
+                <a href="journal.html" class="nav-link">Journal</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="lg:hidden"><i data-lucide="menu" class="w-6 h-6 text-gold"></i></div>
+        </div>
+    </nav>
+
+    <!-- Product Section -->
+    <main class="pt-48 pb-40">
+        <div class="max-w-[1600px] mx-auto px-10">
+
+            <!-- Back link -->
+            <a href="collections.html" class="inline-flex items-center gap-3 text-zinc-400 text-[0.6rem] uppercase tracking-[0.4em] hover:text-gold transition-colors mb-20">
+                <i data-lucide="arrow-left" class="w-3 h-3"></i>
+                Collections
+            </a>
+
+            <div class="grid lg:grid-cols-2 gap-32 items-start">
+
+                <!-- Image -->
+                <div class="aspect-[3/4] bg-zinc-900 overflow-hidden relative">
+                    <img src="assets/lure_c.png" alt="To Stomp"
+                        class="w-full h-full object-cover">
+                </div>
+
+                <!-- Info -->
+                <div class="pt-8">
+                    <span class="text-[0.6rem] tracking-[0.4em] text-zinc-400 uppercase block mb-6">Collection 03</span>
+                    <h1 class="text-5xl md:text-6xl mb-6 serif">To Stomp</h1>
+
+                    <p class="text-zinc-300 font-light text-sm leading-relaxed tracking-wider mb-20">
+                        深場や堰堤、そこに居座る魚たちを狂喜させるダートを見せます。<br>
+                        ※シークレットな使い方として、テールアイ側にラインを結び、ロッドを立てて引いてみて下さい。<br>
+                        ゆらゆらと波紋を生み出し、サーフェイスを支配いたします。
+                    </p>
+
+                    <!-- Spec Table -->
+                    <div class="mb-20">
+                        <h2 class="text-[0.6rem] uppercase tracking-[0.5em] text-zinc-400 mb-8 font-bold" style="font-family: 'Noto Sans JP', sans-serif;">Specifications</h2>
+                        <div class="spec-row">
+                            <span class="text-[0.65rem] uppercase tracking-[0.3em] text-zinc-400">Type</span>
+                            <span class="text-sm tracking-widest text-white">Sinking</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="text-[0.65rem] uppercase tracking-[0.3em] text-zinc-400">Material</span>
+                            <span class="text-sm tracking-widest text-white">Wood</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="text-[0.65rem] uppercase tracking-[0.3em] text-zinc-400">Size</span>
+                            <span class="text-sm tracking-widest text-white">45 mm</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="text-[0.65rem] uppercase tracking-[0.3em] text-zinc-400">Weight</span>
+                            <span class="text-sm tracking-widest text-white">2.3 g</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="text-[0.65rem] uppercase tracking-[0.3em] text-zinc-400">Price</span>
+                            <span class="text-sm tracking-widest text-white">¥2,800 （税込）</span>
+                        </div>
+                    </div>
+
+                    <!-- Contact CTA -->
+                    <a href="contact.html" class="inline-block border border-gold/40 text-gold px-12 py-5 text-[0.65rem] uppercase tracking-[0.3em] hover:bg-gold hover:text-black transition-all duration-500">
+                        Order Inquiry
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-20 bg-[#0D0D0D] border-t border-white/5">
+        <div class="max-w-[1600px] mx-auto px-10 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-[0.55rem] tracking-[0.4em] text-zinc-500 uppercase">
+            <p>&copy; 2026 PENTAFISH. All rights reserved.</p>
+            <div class="flex gap-10 mt-6 md:mt-0">
+                <a href="#" class="hover:text-gold transition-colors">Shop Info</a>
+                <a href="#" class="hover:text-gold transition-colors">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>
