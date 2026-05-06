@@ -33,6 +33,48 @@
         .spec-row:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
         .spec-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.3em; color: #71717a; }
         .spec-value { font-size: 0.8rem; font-weight: 300; line-height: 2; letter-spacing: 0.05em; color: #d4d4d8; }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .px-10 { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+            .pt-64 { padding-top: 8rem !important; }
+            .pb-32 { padding-bottom: 2rem !important; }
+            .py-32 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+            .py-20 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+            .exhibition-spacing { padding: 3rem 0 !important; }
+            h1 { font-size: 1.8rem !important; line-height: 1.4 !important; }
+            h2 { font-size: 1.3rem !important; line-height: 1.5 !important; }
+            h3 { font-size: 1.05rem !important; }
+            .gap-x-20 { gap: 2rem !important; }
+            .gap-y-40 { gap: 3rem !important; }
+            .gap-24 { gap: 2rem !important; }
+            .gap-32 { gap: 2rem !important; }
+            .mb-40 { margin-bottom: 2.5rem !important; }
+            .mb-32 { margin-bottom: 2rem !important; }
+            .mb-20 { margin-bottom: 1.5rem !important; }
+            .space-y-40 > * + * { margin-top: 3rem !important; }
+            .space-y-32 > * + * { margin-top: 2.5rem !important; }
+            .text-5xl { font-size: 1.8rem !important; }
+            .text-7xl { font-size: 1.8rem !important; }
+            .text-4xl { font-size: 1.4rem !important; }
+            .text-3xl { font-size: 1.2rem !important; }
+            .text-2xl { font-size: 1rem !important; }
+            .md\:text-7xl { font-size: 1.8rem !important; }
+            .md\:text-5xl { font-size: 1.8rem !important; }
+            .md\:text-4xl { font-size: 1.4rem !important; }
+            .leading-\[2\.2\] { line-height: 1.9 !important; }
+            .tracking-widest { letter-spacing: 0.05em !important; }
+            .tracking-\[0\.3em\] { letter-spacing: 0.1em !important; }
+            .max-w-4xl { max-width: 100% !important; }
+            .max-w-3xl { max-width: 100% !important; }
+            .max-w-5xl { max-width: 100% !important; }
+            .aspect-video { aspect-ratio: 16/9 !important; }
+            .aspect-\[21\/9\] { aspect-ratio: 4/3 !important; }
+            .grid.md\:grid-cols-2 { grid-template-columns: 1fr !important; }
+            .grid.md\:grid-cols-3 { grid-template-columns: 1fr !important; }
+            .grid.lg\:grid-cols-2 { grid-template-columns: 1fr !important; }
+            .grid.lg\:grid-cols-3 { grid-template-columns: 1fr !important; }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -65,23 +107,23 @@
 
             <div class="spec-row">
                 <span class="spec-label">販売業者</span>
-                <span class="spec-value">PENTA FISH</span>
+                <span class="spec-value">[屋号または会社名]</span>
             </div>
             <div class="spec-row">
                 <span class="spec-label">代表責任者</span>
-                <span class="spec-value">長尾 真央</span>
+                <span class="spec-value">[氏名]</span>
             </div>
             <div class="spec-row">
                 <span class="spec-label">所在地</span>
-                <span class="spec-value">640-8482<br> 和歌山県和歌山市六十谷14</span>
+                <span class="spec-value">[郵便番号・住所]</span>
             </div>
             <div class="spec-row">
                 <span class="spec-label">電話番号</span>
-                <span class="spec-value">073-461-3365</span>
+                <span class="spec-value">[電話番号]</span>
             </div>
             <div class="spec-row">
                 <span class="spec-label">メールアドレス</span>
-                <span class="spec-value">kariad20120926@gmail.com</span>
+                <span class="spec-value">[アドレス]</span>
             </div>
             <div class="spec-row">
                 <span class="spec-label">販売価格</span>
@@ -89,7 +131,7 @@
             </div>
             <div class="spec-row">
                 <span class="spec-label">商品代金以外の必要料金</span>
-                <span class="spec-value">消費税、送料（全国一律550円、または地域別）、振込手数料</span>
+                <span class="spec-value">消費税、送料（全国一律○円、または地域別）、振込手数料</span>
             </div>
             <div class="spec-row">
                 <span class="spec-label">支払方法</span>
@@ -97,11 +139,11 @@
             </div>
             <div class="spec-row">
                 <span class="spec-label">商品の引き渡し時期</span>
-                <span class="spec-value">決済確認後、2営業日以内に発送　※特注・オーダーに関しては要相談</span>
+                <span class="spec-value">決済確認後、○営業日以内に発送</span>
             </div>
             <div class="spec-row">
                 <span class="spec-label">返品・交換・キャンセル</span>
-                <span class="spec-value">商品到着後7日以内に要連絡。不良品の場合は当店負担、お客様都合の場合はお客様負担。</span>
+                <span class="spec-value">商品到着後○日以内に要連絡。不良品の場合は当店負担、お客様都合の場合はお客様負担。</span>
             </div>
 
         </div>
