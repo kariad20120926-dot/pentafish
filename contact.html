@@ -14,10 +14,8 @@
         h1, h2, h3, .serif { font-family: 'Noto Sans JP', sans-serif; }
         @font-face {
             font-family: 'Westgate';
-            src: url('assets/Westgate.woff2') format('woff2'),
-                 url('assets/Westgate.woff') format('woff'),
-                 url('assets/Westgate.otf') format('opentype'),
-                 url('assets/Westgate.ttf') format('truetype');
+            src: url('assets/Westgate-Regular.otf') format('opentype'),
+                 url('assets/Westgate-Bold.otf') format('opentype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
@@ -96,6 +94,14 @@
             }
         }
     </style>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-06WGNVQPP9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-06WGNVQPP9');
+    </script>
 </head>
 <body class="antialiased">
     <!-- Navigation -->
@@ -142,7 +148,7 @@
             <div class="mb-20 text-center">
                 <p class="text-zinc-300 font-light leading-relaxed tracking-widest text-sm">
                     製品に関するご質問や、特注オーダーのご相談を承ります。<br>
-               </p>
+                    あなただけの「五感を研ぎ澄ます道具」を共に創り上げるための第一歩。</p>
             </div>
             <form action="https://formspree.io/f/xeenazln" method="POST" class="space-y-12">
                 <div class="grid md:grid-cols-2 gap-12">
@@ -186,7 +192,7 @@
             <div>
                 <h4 class="text-gold text-[0.6rem] uppercase tracking-[0.5em] mb-10 font-bold italic">Location</h4>
                 <p class="text-xs text-zinc-300 font-light leading-loose tracking-[0.2em]">
-                    〒640-8482 和歌山県 和歌山市 六十谷<br>
+                    〒100-0005 東京都千代田区丸の内1-1-1<br>
                     PENTAFISH Atelier (Appointment Only)
                 </p>
             </div>
@@ -195,19 +201,19 @@
                 <div class="flex flex-col gap-4">
                     <a href="https://www.instagram.com/penta_fish/" target="_blank" class="flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
                         <i data-lucide="instagram" class="w-4 h-4"></i>
-                        <span class="text-xs tracking-[0.2em]">Instagram</span>
+                        <span class="text-xs tracking-[0.2em]">@penta_fish</span>
                     </a>
                     <a href="#" class="flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
                         <i data-lucide="twitter" class="w-4 h-4"></i>
-                        <span class="text-xs tracking-[0.2em]">X</span>
+                        <span class="text-xs tracking-[0.2em]">Twitter</span>
                     </a>
                 </div>
             </div>
             <div>
                 <h4 class="text-gold text-[0.6rem] uppercase tracking-[0.5em] mb-10 font-bold italic">Contact</h4>
                 <p class="text-xs text-zinc-300 font-light leading-loose tracking-[0.2em]">
-                    contact@pentafish.jp<br>
-                    +81 (461)3365
+                    contact@pentafish.com<br>
+                    +81 (0)3 0000 0000
                 </p>
             </div>
         </div>
@@ -228,3 +234,4 @@
     </script>
 </body>
 </html>
+
