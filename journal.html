@@ -33,8 +33,10 @@
 
         @font-face {
             font-family: 'Westgate';
-            src: url('assets/Westgate-Regular.otf') format('opentype'),
-                 url('assets/Westgate-Bold.otf') format('opentype');
+            src: url('assets/Westgate.woff2') format('woff2'),
+                 url('assets/Westgate.woff') format('woff'),
+                 url('assets/Westgate.otf') format('opentype'),
+                 url('assets/Westgate.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
@@ -127,14 +129,6 @@
             }
         }
     </style>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-06WGNVQPP9"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-06WGNVQPP9');
-    </script>
 </head>
 
 <body class="antialiased">
@@ -179,42 +173,8 @@
 
     <!-- Blog Posts Section -->
     <section class="py-32">
-        <div class="max-w-4xl mx-auto px-10 space-y-32">
-
-            <!-- Post 3 (最新) -->
-            <article>
-                <div class="aspect-video bg-zinc-900 mb-10 overflow-hidden relative group">
-                    <img src="assets/about.png" alt="Journal Photo"
-                        class="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105">
-                </div>
-                <div class="flex items-center gap-6 mb-8">
-                    <time class="text-zinc-400 text-[0.6rem] uppercase tracking-[0.4em]">2026.05.04</time>
-                    <span class="text-gold text-[0.5rem] uppercase tracking-[0.3em] border border-gold/30 px-3 py-1">Business</span>
-                </div>
-                <h2 class="text-lg md:text-xl mb-6 serif hover:text-gold transition-colors cursor-pointer leading-tight">
-                    For Business | お取引・法人様向けオーダー</h2>
-                <p class="text-zinc-400 font-light text-xs leading-[2] tracking-wider mb-10">
-                    PENTA FISHのプロダクトをお取り扱いいただける小売店様向けの窓口を開設しております。製品の卸売ロットや納期に関するご相談は、Contactページの専用フォームよりお問い合わせください。</p>
-                <a href="journal_post-03.html"
-                    class="text-xs uppercase tracking-[0.3em] font-bold border-b border-white/10 pb-2 hover:border-gold transition-all">Read More</a>
-            </article>
-            <article>
-                <div class="aspect-video bg-zinc-900 mb-10 overflow-hidden relative group">
-                    <img src="assets/about.png" alt="Journal Photo"
-                        class="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105">
-                </div>
-                <div class="flex items-center gap-6 mb-8">
-                    <time class="text-zinc-400 text-[0.6rem] uppercase tracking-[0.4em]">2026.04.27</time>
-                    <span class="text-gold text-[0.5rem] uppercase tracking-[0.3em] border border-gold/30 px-3 py-1">Record</span>
-                </div>
-                <h2 class="text-lg md:text-xl mb-6 serif hover:text-gold transition-colors cursor-pointer leading-tight">
-                    Official Website Launched</h2>
-                <p class="text-zinc-400 font-light text-xs leading-[2] tracking-wider mb-10">
-                    PENTA FISHの公式ウェブサイトを公開いたしました。プロダクトの最新情報はもちろん、日々の開発風景やフィールドテストの記録、活動の動向を綴る「Journal」にもぜひご注目ください。</p>
-                <a href="journal_post-01.html"
-                    class="text-xs uppercase tracking-[0.3em] font-bold border-b border-white/10 pb-2 hover:border-gold transition-all">Read More</a>
-            </article>
-
+        <div class="max-w-4xl mx-auto px-10 space-y-32" id="posts-container">
+            <!-- populated by journal-data.js -->
         </div>
     </section>
     <footer class="py-20 bg-[#0D0D0D] border-t border-white/5">
@@ -223,13 +183,36 @@
         </div>
     </footer>
 
-    <script>lucide.createIcons();</script>
-
+    <script src="journal-data.js"></script>
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
+
+        function renderPosts() {
+            const container = document.getElementById('posts-container');
+            container.innerHTML = JOURNAL_POSTS.map(post => `
+                <article>
+                    <div class="aspect-video bg-zinc-900 mb-10 overflow-hidden relative group">
+                        <img src="${post.image}" alt="Journal Photo"
+                            class="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105">
+                    </div>
+                    <div class="flex items-center gap-6 mb-8">
+                        <time class="text-zinc-400 text-[0.6rem] uppercase tracking-[0.4em]">${post.date}</time>
+                        <span class="text-gold text-[0.5rem] uppercase tracking-[0.3em] border border-gold/30 px-3 py-1">${post.category}</span>
+                    </div>
+                    <h2 class="text-lg md:text-xl mb-6 serif hover:text-gold transition-colors cursor-pointer leading-tight">
+                        ${post.title}</h2>
+                    <p class="text-zinc-400 font-light text-xs leading-[2] tracking-wider mb-10">${post.excerpt}</p>
+                    <a href="journal_post.html?id=${post.id}"
+                        class="text-xs uppercase tracking-[0.3em] font-bold border-b border-white/10 pb-2 hover:border-gold transition-all">Read More</a>
+                </article>
+            `).join('');
+        }
+
+        renderPosts();
+        lucide.createIcons();
     </script>
 </body>
 
