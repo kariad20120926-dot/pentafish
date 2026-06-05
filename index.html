@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PENTAFISH | Experience So Intense, It Shakes All Five Senses</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link rel="canonical" href="https://pentafish.jp/">
     <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600&display=swap"
@@ -156,14 +155,6 @@
             }
         }
     </style>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-06WGNVQPP9"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-06WGNVQPP9');
-    </script>
 </head>
 
 <body class="antialiased">
@@ -245,6 +236,23 @@
         </div>
     </section>
 
+    <!-- Newsletter Section -->
+    <section class="py-32 border-y border-white/5 bg-zinc-950">
+        <div class="max-w-3xl mx-auto px-10 text-center">
+            <span class="text-gold text-[0.6rem] uppercase tracking-[0.5em] mb-6 block">Privilege</span>
+            <h2 class="text-3xl md:text-3xl mb-10 serif">ニュースのご案内</h2>
+            <p class="text-zinc-300 text-sm font-light leading-loose tracking-widest mb-12">
+                最新作や限定モデル、特別イベントの優先案内をニュースレター登録者様へお届けいたします。
+            </p>
+            <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
+                <input type="email" placeholder="Email Address"
+                    class="bg-transparent border border-white/10 px-6 py-4 text-xs tracking-widest w-full focus:border-gold outline-none transition-all">
+                <button type="submit"
+                    class="bg-white text-black px-8 py-4 text-[0.65rem] font-bold uppercase tracking-[0.2em] hover:bg-gold transition-all">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="py-20 bg-[#0D0D0D] border-t border-white/5">
         <div class="max-w-[1600px] mx-auto px-10">
@@ -262,7 +270,7 @@
                         <h4 class="text-[0.6rem] uppercase tracking-[0.4em] text-zinc-300 mb-6 font-bold">Follow</h4>
                         <div class="flex flex-col gap-4 text-xs tracking-widest">
                             <a href="https://www.instagram.com/penta_fish/" target="_blank" class="hover:text-gold">Instagram</a>
-                            <a href="#" class="hover:text-gold">X</a>
+                            <a href="#" class="hover:text-gold">Twitter</a>
                         </div>
                     </div>
                     <div>
