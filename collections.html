@@ -1,251 +1,603 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collections | PENTAFISH</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        :root {
-            --bg-solid: #0D0D0D;
-            --gold-accent: #D4AF37;
-            --light-grey: #F2F2F2;
-        }
+        :root { --bg:#0D0D0D; --gold:#D4AF37; --grey:#F2F2F2; }
+        *,*::before,*::after { box-sizing:border-box; }
 
         body {
-            font-family: 'Noto Sans JP', sans-serif;
-            background-color: var(--bg-solid);
-            color: var(--light-grey);
+            font-family:'Noto Sans JP',sans-serif;
+            background:var(--bg); color:var(--grey);
+            height:100vh; overflow:hidden;
         }
-
-        h1,
-        h2,
-        h3,
-        .serif {
-            font-family: 'Noto Sans JP', sans-serif;
-        }
-
         @font-face {
-            font-family: 'Westgate';
-            src: url('assets/Westgate.woff2') format('woff2'),
+            font-family:'Westgate';
+            src:url('assets/Westgate.woff2') format('woff2'),
                 url('assets/Westgate.woff') format('woff'),
                 url('assets/Westgate.otf') format('opentype'),
                 url('assets/Westgate.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
+            font-display:swap;
         }
-
-        .font-westgate {
-            font-family: 'Westgate', 'Noto Sans JP', sans-serif;
-        }
-
-        .text-gold {
-            color: var(--gold-accent);
-        }
-
-        .nav-link {
-            position: relative;
-            transition: color 0.4s ease;
-        }
-
+        .font-westgate { font-family:'Westgate','Noto Sans JP',sans-serif; }
+        .text-gold { color:var(--gold); }
+        .nav-link { position:relative; transition:color .4s; }
         .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -4px;
-            left: 0;
-            background-color: var(--gold-accent);
-            transition: width 0.4s ease;
+            content:''; position:absolute;
+            width:0; height:1px; bottom:-4px; left:0;
+            background:var(--gold); transition:width .4s;
+        }
+        .nav-link:hover::after { width:100%; }
+
+        /* ═══ LAYOUT ═════════════════════════════════ */
+        #page {
+            display:flex;
+            height:calc(100vh - 80px);
+            margin-top:80px;
         }
 
-        .nav-link:hover::after {
-            width: 100%;
+        /* ─── LEFT: tree sidebar ─────────────────── */
+        #sidebar {
+            width:300px;
+            flex-shrink:0;
+            border-right:1px solid rgba(255,255,255,.06);
+            overflow-y:auto;
+            padding:48px 0 80px;
+            display:flex;
+            flex-direction:column;
+        }
+        /* thin scrollbar */
+        #sidebar::-webkit-scrollbar { width:2px; }
+        #sidebar::-webkit-scrollbar-thumb { background:rgba(255,255,255,.1); }
+
+        /* sidebar header */
+        .sidebar-head {
+            padding:0 36px 36px;
+            border-bottom:1px solid rgba(255,255,255,.05);
+            margin-bottom:24px;
+        }
+        .sidebar-head .label {
+            font-size:.48rem;
+            letter-spacing:.5em;
+            text-transform:uppercase;
+            color:var(--gold);
+            margin-bottom:10px;
+            display:block;
+        }
+        .sidebar-head h1 {
+            font-family:'Playfair Display',serif;
+            font-size:1.9rem;
+            font-weight:700;
+            letter-spacing:.02em;
+            line-height:1;
         }
 
-        .product-card {
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        /* category row */
+        .cat-row {
+            padding:0 36px;
+            margin-bottom:4px;
+        }
+        .cat-btn {
+            width:100%;
+            display:flex;
+            align-items:center;
+            gap:12px;
+            padding:14px 0;
+            border-bottom:1px solid rgba(255,255,255,.05);
+            cursor:pointer;
+            transition:color .3s;
+            background:none; border-left:none; border-top:none; border-right:none;
+            text-align:left;
+            color:var(--grey);
+        }
+        .cat-btn:hover { color:var(--gold); }
+        .cat-btn.active { color:var(--gold); }
+        .cat-btn .cat-num {
+            font-size:.42rem;
+            letter-spacing:.2em;
+            color:#52525b;
+            width:18px;
+            flex-shrink:0;
+        }
+        .cat-btn.active .cat-num { color:rgba(212,175,55,.5); }
+        .cat-btn .cat-ja {
+            font-family:'Playfair Display',serif;
+            font-size:.92rem;
+            font-weight:400;
+            letter-spacing:.04em;
+            flex:1;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+        .cat-btn .cat-en { display:none; }
+        .cat-chevron {
+            width:14px; height:14px;
+            color:#52525b;
+            transition:transform .35s, color .3s;
+            flex-shrink:0;
+        }
+        .cat-btn.active .cat-chevron {
+            transform:rotate(90deg);
+            color:var(--gold);
         }
 
-        .product-card:hover {
-            transform: translateY(-10px);
+        /* product sub-items */
+        .prod-list {
+            overflow:hidden;
+            max-height:0;
+            transition:max-height .4s cubic-bezier(.4,0,.2,1);
+            padding:0 36px 0 68px;
+        }
+        .prod-list.open { max-height:300px; }
+        .prod-item {
+            display:flex;
+            align-items:center;
+            gap:8px;
+            padding:9px 0;
+            border-bottom:1px solid rgba(255,255,255,.03);
+            font-family:'Playfair Display',serif;
+            font-size:.75rem;
+            letter-spacing:.04em;
+            color:#71717a;
+            cursor:pointer;
+            transition:color .3s;
+        }
+        .prod-item:hover { color:var(--grey); }
+        .prod-item.active { color:var(--gold); }
+        .prod-item .dot {
+            width:4px; height:4px;
+            border-radius:50%;
+            background:currentColor;
+            flex-shrink:0;
+        }
+        .prod-item.soon {
+            color:#71717a;
+            cursor:default;
+            font-size:.6rem;
+            letter-spacing:.15em;
+            text-transform:uppercase;
+        }
+        .prod-item.soon:hover { color:#71717a; }
+
+        /* ─── RIGHT: product cards ────────────────── */
+        #main {
+            flex:1;
+            overflow-y:auto;
+            padding:48px 56px 80px;
+        }
+        #main::-webkit-scrollbar { width:2px; }
+        #main::-webkit-scrollbar-thumb { background:rgba(255,255,255,.1); }
+
+        /* section header */
+        .section-head {
+            margin-bottom:40px;
+            padding-bottom:28px;
+            border-bottom:1px solid rgba(255,255,255,.06);
+        }
+        .section-head .s-label {
+            font-size:.48rem;
+            letter-spacing:.5em;
+            text-transform:uppercase;
+            color:var(--gold);
+            margin-bottom:10px;
+            display:block;
+        }
+        .section-head h2 {
+            font-family:'Playfair Display',serif;
+            font-size:2.4rem;
+            font-weight:700;
+            letter-spacing:.02em;
+            line-height:1.1;
+        }
+        .section-head p {
+            margin-top:10px;
+            font-size:.65rem;
+            letter-spacing:.12em;
+            color:#71717a;
         }
 
-        .exhibition-spacing {
-            padding: 10rem 0;
+        /* welcome state (nothing selected) */
+        #welcome {
+            height:100%;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            padding:0 10%;
+        }
+        #welcome .w-label {
+            font-size:.5rem;
+            letter-spacing:.5em;
+            text-transform:uppercase;
+            color:var(--gold);
+            margin-bottom:20px;
+            display:block;
+        }
+        #welcome h2 {
+            font-family:'Playfair Display',serif;
+            font-size:3rem;
+            font-weight:700;
+            line-height:1.2;
+            color:#27272a;
+            margin-bottom:24px;
+        }
+        #welcome p {
+            font-size:.65rem;
+            letter-spacing:.15em;
+            color:#3f3f46;
         }
 
-        /* ===== MOBILE RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .px-10 { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
-            .pt-64 { padding-top: 8rem !important; }
-            .pb-32 { padding-bottom: 2rem !important; }
-            .py-32 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
-            .py-20 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
-            .exhibition-spacing { padding: 3rem 0 !important; }
-            h1 { font-size: 1.8rem !important; line-height: 1.4 !important; }
-            h2 { font-size: 1.3rem !important; line-height: 1.5 !important; }
-            h3 { font-size: 1.05rem !important; }
-            .gap-x-20 { gap: 2rem !important; }
-            .gap-y-40 { gap: 3rem !important; }
-            .gap-24 { gap: 2rem !important; }
-            .gap-32 { gap: 2rem !important; }
-            .mb-40 { margin-bottom: 2.5rem !important; }
-            .mb-32 { margin-bottom: 2rem !important; }
-            .mb-20 { margin-bottom: 1.5rem !important; }
-            .space-y-40 > * + * { margin-top: 3rem !important; }
-            .space-y-32 > * + * { margin-top: 2.5rem !important; }
-            .text-5xl { font-size: 1.8rem !important; }
-            .text-7xl { font-size: 1.8rem !important; }
-            .text-4xl { font-size: 1.4rem !important; }
-            .text-3xl { font-size: 1.2rem !important; }
-            .text-2xl { font-size: 1rem !important; }
-            .md\:text-7xl { font-size: 1.8rem !important; }
-            .md\:text-5xl { font-size: 1.8rem !important; }
-            .md\:text-4xl { font-size: 1.4rem !important; }
-            .leading-\[2\.2\] { line-height: 1.9 !important; }
-            .tracking-widest { letter-spacing: 0.05em !important; }
-            .tracking-\[0\.3em\] { letter-spacing: 0.1em !important; }
-            .max-w-4xl { max-width: 100% !important; }
-            .max-w-3xl { max-width: 100% !important; }
-            .max-w-5xl { max-width: 100% !important; }
-            .aspect-video { aspect-ratio: 16/9 !important; }
-            .aspect-\[21\/9\] { aspect-ratio: 4/3 !important; }
-            .grid.md\:grid-cols-2 { grid-template-columns: 1fr !important; }
-            .grid.md\:grid-cols-3 { grid-template-columns: 1fr !important; }
-            .grid.lg\:grid-cols-2 { grid-template-columns: 1fr !important; }
-            .grid.lg\:grid-cols-3 { grid-template-columns: 1fr !important; }
+        /* product grid */
+        .prod-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
+            gap:40px 28px;
+        }
+        .prod-card {
+            cursor:pointer;
+            display:block;
+            transition:transform .5s cubic-bezier(.4,0,.2,1);
+        }
+        .prod-card:hover { transform:translateY(-10px); }
+        .prod-card-img {
+            aspect-ratio:3/4;
+            background:#111;
+            overflow:hidden;
+            position:relative;
+            margin-bottom:18px;
+        }
+        .prod-card-img img {
+            width:100%; height:100%;
+            object-fit:cover;
+            filter:grayscale(55%);
+            transition:filter .65s, transform .7s;
+        }
+        .prod-card:hover .prod-card-img img {
+            filter:grayscale(0%);
+            transform:scale(1.05);
+        }
+        .prod-card-img .frame {
+            position:absolute; inset:0;
+            border:16px solid transparent;
+            transition:border-color .5s;
+            pointer-events:none;
+        }
+        .prod-card:hover .frame { border-color:rgba(255,255,255,.04); }
+        .prod-card-name {
+            font-family:'Playfair Display',serif;
+            font-size:1.1rem;
+            letter-spacing:.05em;
+            margin-bottom:8px;
+            transition:color .3s;
+        }
+        .prod-card:hover .prod-card-name { color:var(--gold); }
+        .prod-card-cta {
+            font-size:.48rem;
+            letter-spacing:.3em;
+            text-transform:uppercase;
+            color:#52525b;
+            border-bottom:1px solid rgba(255,255,255,.08);
+            padding-bottom:3px;
+            display:inline-block;
+            transition:color .3s, border-color .3s;
+        }
+        .prod-card:hover .prod-card-cta {
+            color:var(--gold);
+            border-color:rgba(212,175,55,.4);
         }
 
-        /* ===== LOGO MOBILE FIX ===== */
-        @media (max-width: 768px) {
-            .font-westgate {
-                font-family: 'Westgate', 'Noto Sans JP', sans-serif !important;
-                font-size: 1.4rem !important;
-                letter-spacing: 0.15em !important;
-            }
-            nav .font-westgate {
-                font-size: 1.4rem !important;
-                letter-spacing: 0.15em !important;
-            }
-            footer .font-westgate {
-                font-size: 1.4rem !important;
-                letter-spacing: 0.15em !important;
-            }
+        /* parts card */
+        .parts-wrap { max-width:460px; }
+        .parts-card {
+            border:1px solid rgba(255,255,255,.1);
+            padding:36px 40px;
+            transition:border-color .4s;
+        }
+        .parts-card:hover { border-color:rgba(212,175,55,.35); }
+        .parts-name {
+            font-family:'Playfair Display',serif;
+            font-size:1.4rem;
+            letter-spacing:.04em;
+            line-height:1.5;
+            margin-bottom:12px;
+        }
+        .parts-sub {
+            font-size:.62rem;
+            letter-spacing:.15em;
+            color:#71717a;
+            margin-bottom:20px;
+        }
+        .parts-tag {
+            display:inline-block;
+            font-size:.44rem;
+            letter-spacing:.2em;
+            text-transform:uppercase;
+            border:1px solid rgba(212,175,55,.3);
+            color:var(--gold);
+            padding:4px 12px;
+        }
+
+        /* coming soon */
+        .soon-wrap {
+            padding:60px 0;
+        }
+        .soon-wrap .st {
+            font-family:'Playfair Display',serif;
+            font-size:2.5rem;
+            color:#52525b;
+            margin-bottom:16px;
+        }
+        .soon-wrap .sm {
+            font-size:.58rem;
+            letter-spacing:.3em;
+            text-transform:uppercase;
+            color:#71717a;
+        }
+        .soon-line {
+            width:40px; height:1px;
+            background:rgba(255,255,255,.06);
+            margin:20px 0;
+        }
+
+        /* fade-in animation for main content */
+        .fade-in {
+            animation: fadeUp .4s ease both;
+        }
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(14px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        /* ─── Mobile ─────────────────────────────── */
+        @media(max-width:767px){
+            body { height:auto; overflow:auto; }
+            #page { flex-direction:column; height:auto; margin-top:80px; }
+            #sidebar { width:100%; height:auto; overflow:visible; border-right:none; border-bottom:1px solid rgba(255,255,255,.06); padding:32px 0 16px; }
+            #main { padding:32px 20px 60px; }
+            .sidebar-head { padding:0 20px 24px; }
+            .cat-row { padding:0 20px; }
+            .prod-list { padding:0 20px 0 48px; }
+            .prod-grid { grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:28px 16px; }
+            .font-westgate { font-size:1.4rem !important; letter-spacing:.15em !important; }
         }
     </style>
 </head>
-
 <body class="antialiased">
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-[#0D0D0D]/90 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-[1600px] mx-auto px-10 py-6 flex justify-between items-center">
-            <a href="index.html" class="text-5xl tracking-[0.3em] font-westgate text-white">PENTAFISH</a>
-            <div class="hidden lg:flex space-x-16 text-[0.65rem] uppercase tracking-[0.4em] font-light">
-                <a href="index.html" class="nav-link">Top</a>
-                <a href="philosophy.html" class="nav-link">Philosophy</a>
-                <a href="collections.html" class="nav-link text-gold">Collections</a>
-                <a href="craftsmanship.html" class="nav-link">Craftsmanship</a>
-                <a href="journal.html" class="nav-link">Journal</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-            </div>
-            <div class="lg:hidden">
-            <button id="menu-btn" onclick="toggleMenu()" class="focus:outline-none">
+
+<!-- Navigation -->
+<nav class="fixed w-full z-50 bg-[#0D0D0D]/90 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-[1600px] mx-auto px-10 py-6 flex justify-between items-center">
+        <a href="index.html" class="text-5xl tracking-[0.3em] font-westgate text-white">PENTAFISH</a>
+        <div class="hidden lg:flex space-x-16 text-[0.65rem] uppercase tracking-[0.4em] font-light">
+            <a href="index.html"         class="nav-link">Top</a>
+            <a href="philosophy.html"    class="nav-link">Philosophy</a>
+            <a href="collections.html"   class="nav-link text-gold">Collections</a>
+            <a href="craftsmanship.html" class="nav-link">Craftsmanship</a>
+            <a href="journal.html"       class="nav-link">Journal</a>
+            <a href="contact.html"       class="nav-link">Contact</a>
+        </div>
+        <div class="lg:hidden">
+            <button onclick="toggleMenu()" class="focus:outline-none">
                 <i data-lucide="menu" class="w-6 h-6 text-gold"></i>
             </button>
         </div>
     </div>
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden lg:hidden bg-[#0D0D0D] border-t border-white/5 px-6 py-6 space-y-6 text-[0.65rem] uppercase tracking-[0.4em] font-light">
-        <a href="index.html" class="block hover:text-gold transition-colors">Top</a>
-        <a href="philosophy.html" class="block hover:text-gold transition-colors">Philosophy</a>
-        <a href="collections.html" class="block hover:text-gold transition-colors">Collections</a>
+        <a href="index.html"         class="block hover:text-gold transition-colors">Top</a>
+        <a href="philosophy.html"    class="block hover:text-gold transition-colors">Philosophy</a>
+        <a href="collections.html"   class="block hover:text-gold transition-colors">Collections</a>
         <a href="craftsmanship.html" class="block hover:text-gold transition-colors">Craftsmanship</a>
-        <a href="journal.html" class="block hover:text-gold transition-colors">Journal</a>
-        <a href="contact.html" class="block hover:text-gold transition-colors">Contact</a>
+        <a href="journal.html"       class="block hover:text-gold transition-colors">Journal</a>
+        <a href="contact.html"       class="block hover:text-gold transition-colors">Contact</a>
     </div>
+</nav>
+
+<!-- ═══ PAGE ════════════════════════════════════════════ -->
+<div id="page">
+
+    <!-- ── LEFT: Tree sidebar ───────────────────────── -->
+    <nav id="sidebar">
+        <div class="sidebar-head">
+            <span class="label">Curated Gallery</span>
+            <h1>Collections</h1>
         </div>
+
+        <!-- categories rendered by JS -->
+        <div id="tree"></div>
     </nav>
 
-    <!-- Header Section -->
-    <header class="pt-64 pb-32 border-b border-white/5 bg-zinc-950">
-        <div class="max-w-[1600px] mx-auto px-10">
-            <span class="text-gold uppercase tracking-[0.6em] text-[0.6rem] mb-6 block font-bold italic">Curated
-                Gallery</span>
-            <h1 class="text-5xl md:text-7xl font-bold tracking-[-0.02em] leading-tight serif text-white" style="font-family: 'Playfair Display', serif;">Collections
-            </h1>
+    <!-- ── RIGHT: Main content ──────────────────────── -->
+    <main id="main">
+        <div id="welcome">
+            <span class="w-label">PENTAFISH Collections</span>
+            <h2>カテゴリを<br>選択してください</h2>
+            <p>左のメニューからカテゴリを選んでください</p>
         </div>
-    </header>
+        <div id="content" style="display:none;"></div>
+    </main>
 
-    <!-- Gallery Section -->
-    <section class="exhibition-spacing">
-        <div class="max-w-[1600px] mx-auto px-10">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-20 gap-y-40">
-                <!-- Item 1: Handmade Lure -->
-                <a href="product_with-beak-s2.html" class="product-card group block">
-                    <div class="aspect-[3/4] bg-zinc-900 mb-12 overflow-hidden relative">
-                        <img src="assets/lure_a.png" alt="Lure A"
-                            class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
-                        <div
-                            class="absolute inset-0 border-[20px] border-transparent group-hover:border-white/5 transition-all pointer-events-none">
-                        </div>
-                    </div>
-                    <h3 class="text-2xl mb-6 tracking-wider" style="font-family: 'Playfair Display', serif;">With Beak S2</h3>
-                </a>
+</div>
 
-                <!-- Item 2: Fashion/Apparel (Using lure_b as placeholder style) -->
-                <a href="product_kamaitachi.html" class="product-card group block">
-                    <div class="aspect-[3/4] bg-zinc-900 mb-12 overflow-hidden relative">
-                        <img src="assets/lure_b.png" alt="Apparel Placeholder"
-                            class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
-                        <div
-                            class="absolute inset-0 border-[20px] border-transparent group-hover:border-white/5 transition-all pointer-events-none">
-                        </div>
-                    </div>
-                    <h3 class="text-2xl mb-6 tracking-wider" style="font-family: 'Playfair Display', serif;">Kamaitachi</h3>
-                </a>
+<script>
+/* ═══════════════════════════════════════════════════════
+   Data
+   ═══════════════════════════════════════════════════════ */
+const CATALOG = [
+    {
+        id: 'lure',
+        num: '01',
+        label: 'ルアー',
+        labelEn: 'Lure',
+        desc: 'Hard Baits · Plugs · Sea Water',
+        products: [
+            { id:'l1', title:'With Beak S2', href:'product_with-beak-s2.html', image:'assets/lure_a.png' },
+            { id:'l2', title:'Kamaitachi',   href:'product_kamaitachi.html',   image:'assets/lure_b.png' },
+            { id:'l3', title:'To Stomp',     href:'product_to-stomp.html',     image:'assets/lure_c.png' },
+        ]
+    },
+    {
+        id: 'float',
+        num: '02',
+        label: 'ウキ',
+        labelEn: 'Float',
+        desc: 'Fresh Water · Floats & Indicators',
+        products: []
+    },
+    {
+        id: 'parts',
+        num: '03',
+        label: 'リール・パーツ',
+        labelEn: 'Reel Parts',
+        desc: 'Precision Machined Replacement Parts',
+        products: [
+            { id:'p1', title:'PEEK Brake Block', sub:'abu Garcia 5000~6000 Series', href:null, image:null }
+        ]
+    }
+];
 
-                <!-- Item 3: Gear -->
-                <a href="product_to-stomp.html" class="product-card group block">
-                    <div class="aspect-[3/4] bg-zinc-900 mb-12 overflow-hidden relative">
-                        <img src="assets/lure_c.png" alt="Gear Placeholder"
-                            class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
-                        <div
-                            class="absolute inset-0 border-[20px] border-transparent group-hover:border-white/5 transition-all pointer-events-none">
-                        </div>
-                    </div>
-                    <h3 class="text-2xl mb-6 tracking-wider" style="font-family: 'Playfair Display', serif;">To Stomp</h3>
-                </a>
+let activeCat = null;
+
+/* ═══════════════════════════════════════════════════════
+   Build tree
+   ═══════════════════════════════════════════════════════ */
+function buildTree() {
+    const tree = document.getElementById('tree');
+    tree.innerHTML = CATALOG.map(cat => `
+        <div class="cat-row">
+            <button class="cat-btn" id="btn-${cat.id}" onclick="selectCat('${cat.id}')">
+                <span class="cat-num">${cat.num}</span>
+                <span class="cat-ja">${cat.labelEn}</span>
+                <i data-lucide="chevron-right" class="cat-chevron"></i>
+            </button>
+            <div class="prod-list" id="list-${cat.id}">
+                ${buildProdList(cat)}
             </div>
         </div>
-    </section>
+    `).join('');
+    lucide.createIcons();
+}
 
-    <!-- Footer -->
-    <footer class="py-20 bg-[#0D0D0D] border-t border-white/5">
-        <div
-            class="max-w-[1600px] mx-auto px-10 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-[0.55rem] tracking-[0.4em] text-zinc-500 uppercase">
-            <p>&copy; 2026 PENTAFISH. All rights reserved.</p>
-            <div class="flex gap-10 mt-6 md:mt-0">
-                <a href="#" class="hover:text-gold transition-colors">Shop Info</a>
-                <a href="#" class="hover:text-gold transition-colors">Privacy Policy</a>
-            </div>
+function buildProdList(cat) {
+    if (cat.products.length === 0) {
+        return `<div class="prod-item soon"><span class="dot"></span>Coming Soon</div>`;
+    }
+    return cat.products.map(p => `
+        <div class="prod-item" id="pi-${p.id}"
+             onclick="${p.href ? `window.location='${p.href}'` : ''}">
+            <span class="dot"></span>${p.title}
         </div>
-    </footer>
+    `).join('');
+}
 
-    <script>lucide.createIcons();</script>
+/* ═══════════════════════════════════════════════════════
+   Select category
+   ═══════════════════════════════════════════════════════ */
+function selectCat(catId) {
+    const cat = CATALOG.find(c => c.id === catId);
 
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+    // toggle collapse if already active
+    if (activeCat === catId) {
+        activeCat = null;
+        document.getElementById('btn-' + catId).classList.remove('active');
+        document.getElementById('list-' + catId).classList.remove('open');
+        showWelcome();
+        return;
+    }
+
+    // close previous
+    if (activeCat) {
+        document.getElementById('btn-' + activeCat)?.classList.remove('active');
+        document.getElementById('list-' + activeCat)?.classList.remove('open');
+    }
+    activeCat = catId;
+
+    // open new
+    document.getElementById('btn-' + catId).classList.add('active');
+    document.getElementById('list-' + catId).classList.add('open');
+
+    // render content
+    renderContent(cat);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Render right-side content
+   ═══════════════════════════════════════════════════════ */
+function renderContent(cat) {
+    document.getElementById('welcome').style.display  = 'none';
+    const content = document.getElementById('content');
+    content.style.display = 'block';
+    content.classList.remove('fade-in');
+    void content.offsetWidth; // reflow to restart animation
+    content.classList.add('fade-in');
+
+    // header
+    let html = `
+        <div class="section-head">
+            <span class="s-label">${cat.desc}</span>
+            <h2>${cat.labelEn}</h2>
+        </div>
+    `;
+
+    // body
+    if (cat.products.length === 0) {
+        html += `
+            <div class="soon-wrap">
+                <div class="st">Coming Soon</div>
+                <div class="soon-line"></div>
+                <div class="sm">近日公開予定 — ご期待ください</div>
+            </div>`;
+    } else {
+        const hasImages = cat.products.some(p => p.image);
+        if (hasImages) {
+            html += `<div class="prod-grid">
+                ${cat.products.map(p => `
+                    <a href="${p.href}" class="prod-card">
+                        <div class="prod-card-img">
+                            <img src="${p.image}" alt="${p.title}">
+                            <div class="frame"></div>
+                        </div>
+                        <div class="prod-card-name">${p.title}</div>
+                        <span class="prod-card-cta">View Product</span>
+                    </a>
+                `).join('')}
+            </div>`;
+        } else {
+            html += `<div class="parts-wrap">
+                ${cat.products.map(p => `
+                    <div class="parts-card" style="cursor:${p.href?'pointer':'default'}"
+                         ${p.href ? `onclick="window.location='${p.href}'"` : ''}>
+                        <div class="parts-name">${p.title}</div>
+                        ${p.sub ? `<div class="parts-sub">${p.sub}</div>` : ''}
+                        <div class="parts-tag">Machined Parts</div>
+                    </div>
+                `).join('')}
+            </div>`;
         }
-    </script>
-</body>
+    }
 
+    content.innerHTML = html;
+}
+
+function showWelcome() {
+    document.getElementById('welcome').style.display = 'flex';
+    document.getElementById('content').style.display = 'none';
+}
+
+/* ═══════════════════════════════════════════════════════
+   Init
+   ═══════════════════════════════════════════════════════ */
+function toggleMenu() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+}
+
+lucide.createIcons();
+window.addEventListener('DOMContentLoaded', buildTree);
+</script>
+</body>
 </html>
